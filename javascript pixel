@@ -1,0 +1,28 @@
+makeGrid()
+function makeGrid() {
+  // Your code goes here!
+  gridCanvas.innerHTML = '';
+
+  // Create fragment to build the rows and columns on
+  const fragment = document.createDocumentFragment();
+
+  for (let x = 0; x < gridHeight.value; x++) {
+    const tr = document.createElement('tr');
+
+    for (let y = 0; y < gridWidth.value; y++) {
+      const td = document.createElement('td');
+      tr.appendChild(td);
+    }
+
+    tr.addEventListener('click', clickedBox);
+    fragment.appendChild(tr);
+  }
+  // Push fragment onto DOM
+  gridCanvas.appendChild(fragment);
+};
+
+document.querySelector('form').addEventListener('submit', function(event){
+  event.preventDefault();
+  makeGrid();
+});
+
